@@ -5,7 +5,7 @@ const carouselDom = ref(null);
 const sliderDom = ref(null);
 const thumbnailBorderDom = ref(null);
 
-let timeRunning = 100000;
+// let timeRunning = 100000;
 let timeAutoNext = 120000;
 let runTimeOut;
 
@@ -67,24 +67,24 @@ function showSlider(type) {
     <div class="list">
       <!-- item 1 -->
       <div class="item">
-        <img src="../assets/image/arena.jpg" />
+        <img src="../assets/image/arena_rockandScrissors.png" />
         <div class="content">
-          <div class="author">PaulaPP</div>
-          <div class="title">Game</div>
-          <div class="topic">Rock and Scissors</div>
-          <div class="des">
-            <!-- lorem 50 -->
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi,
-            rem magnam nesciunt minima placeat, itaque eum neque officiis unde,
-            eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut
-            doloribus non numquam. Explicabo, laboriosam nisi reprehenderit
-            tempora at laborum natus unde. Ut, exercitationem eum aperiam illo
-            illum laudantium?
+          <!-- <div class="author">PaulaPP</div> -->
+          <div class="color-border">
+            <div class="title">Game</div>
+            <div class="topic">Rock and Scissors</div>
+            <div class="des">
+              Paper, Scissors" is a simple game in which two players choose from
+              three options: paper, scissors or rock. It requires quick
+              thinking, strategy and a bit of luck. Can you defeat your opponent
+              in this exciting game?
+            </div>
           </div>
+
           <div class="buttons">
             <!-- <button>Play the Game</button> -->
-            <button>
-              <router-link to="/rockandscissors">Play the Game</router-link>
+            <button class="color-border">
+              <router-link to="/rockandScissors">Play Game</router-link>
             </button>
           </div>
         </div>
@@ -157,10 +157,10 @@ function showSlider(type) {
     <div class="thumbnail">
       <!-- thumnail 1 -->
       <div class="item">
-        <img src="../assets/image/img1.jpg" />
+        <img src="../assets/image/arena_rockandScrissors.png" />
         <div class="content">
-          <div class="title">Name Slider</div>
-          <div class="description">Description</div>
+          <div class="title">Rock and Scissors</div>
+          <!-- <div class="description">Description</div> -->
         </div>
       </div>
       <!-- thumnail 2 -->
@@ -191,15 +191,21 @@ function showSlider(type) {
     <!-- next prev -->
 
     <div class="arrows">
-      <button id="prev" @click="showSlider('prev')"><</button>
-      <button id="next" @click="showSlider('next')">></button>
+      <button id="prev" class="color-border" @click="showSlider('prev')">
+        <
+      </button>
+      <button id="next" class="color-border" @click="showSlider('next')">
+        >
+      </button>
     </div>
     <!-- time running -->
     <div class="time"></div>
   </div>
 </template>
 
-<style scoped>
+<style>
+/* @import "../assets/Css/carusel.css"; */
+
 a {
   text-decoration: none;
 }
@@ -214,7 +220,7 @@ header {
   z-index: 100;
 }
 header a {
-  color: #eee;
+  color: var(--white-primary);
   margin-right: 40px;
 }
 
@@ -254,14 +260,18 @@ header a {
   font-weight: bold;
   letter-spacing: 10px;
 }
-.carousel .list .item .title,
-.carousel .list .item .topic {
-  font-size: 5em;
-  font-weight: bold;
-  line-height: 1.3em;
+.title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 .carousel .list .item .topic {
-  color: #f1683a;
+  font-size: 4em;
+  font-weight: bold;
+  line-height: 1.3em;
+  margin-bottom: 0.5em;
+}
+.carousel .list .item .topic {
+  color: var(--orange-secondary);
 }
 .carousel .list .item .buttons {
   display: grid;
@@ -271,16 +281,25 @@ header a {
   margin-top: 20px;
 }
 .carousel .list .item .buttons button {
-  border: none;
-  background-color: #eee;
-  letter-spacing: 3px;
+  font-size: 15px;
+  font-weight: bold;
   font-family: Poppins;
   font-weight: 500;
+  text-align: center;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: var(--orange-primary);
+  transition: color 0.7s;
 }
 .carousel .list .item .buttons button:nth-child(2) {
   background-color: transparent;
   border: 1px solid #fff;
-  color: #eee;
+  color: var(--white-primary);
 }
 
 /* Part II */
@@ -307,18 +326,20 @@ header a {
   border-radius: 20px;
 }
 .thumbnail .item .content {
-  color: #fff;
+  color: var(--orange-secondary);
   position: absolute;
   bottom: 10px;
-  left: 10px;
-  right: 10px;
+  width: 100%;
 }
 .thumbnail .item .content .title {
-  font-weight: 500;
+  font-weight: 400;
+  background-color: #000000b6;
+  font-size: 20px;
+  padding-left: 5px;
 }
-.thumbnail .item .content .description {
+/* .thumbnail .item .content .description {
   font-weight: 300;
-}
+} */
 
 /* Part III */
 /* arrows */
@@ -337,16 +358,14 @@ header a {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #eee4;
-  border: none;
-  color: #fff;
+  color: var(--white-primary);
   font-family: monospace;
   font-weight: bold;
   transition: 0.5s;
 }
 .arrows button:hover {
   background-color: #fff;
-  color: #000;
+  color: var(--orange-primery);
 }
 
 /* Part IV */
@@ -357,7 +376,7 @@ header a {
 
 /* animation text in first item */
 
-.carousel .list .item:nth-child(1) .content .author,
+.carousel .list .item:nth-child(1) .content .color-border,
 .carousel .list .item:nth-child(1) .content .title,
 .carousel .list .item:nth-child(1) .content .topic,
 .carousel .list .item:nth-child(1) .content .des,

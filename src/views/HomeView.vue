@@ -4,6 +4,6 @@ import Carousel from "../components/Carousel.vue";
 <template>
   <div>
     <Carousel />
-    <img src="" alt="" />
+    <!-- <img src="" alt="" /> -->
   </div>
 </template>

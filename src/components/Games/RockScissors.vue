@@ -100,49 +100,105 @@ const getIconClass = choice => {
 </script>
 
 <template>
-  <div>Rock and Scissors</div>
+  <div class="box">
+    <!--  -->
+    <div class="arena">
+      <!--  -->
+      <div class="players">
+        <h2 class="computer">Computer</h2>
+        <!--  -->
+        <div class="round">
+          <p>round</p>
+          <span>{{ round }}</span>
+        </div>
 
-  <h2>
-    Computer Choice:
-    <span
-      >{{ computerChoice }}<i :class="getIconClass(computerChoice)"></i
-    ></span>
-  </h2>
-  <h2>
-    User Choice:
+        <h2>User</h2>
+      </div>
 
-    <span>{{ userChoice }} <i :class="getIconClass(userChoice)"></i></span>
-  </h2>
+      <div class="choicePlayers">
+        <span
+          >{{ computerChoice }}<i :class="getIconClass(computerChoice)"></i
+        ></span>
+        <p>VS</p>
+        <span class="user"
+          >{{ userChoice }} <i :class="getIconClass(userChoice)"></i
+        ></span>
+      </div>
 
-  <h3>
-    Round: <span>{{ round }}</span>
-  </h3>
+      <!-- <div class="users"></div> -->
+      <div class="result">
+        <h2>Result</h2>
+        <span>{{ result }}</span>
+      </div>
 
-  <button
-    v-for="choice in possibleChoices"
-    @click="makeChoice(choice)"
-    :key="choice"
-  >
-    <i v-if="choice === 'rock'" class="fa-solid fa-star"></i>
-    <!-- Icon for rock -->
-    <i v-else-if="choice === 'paper'" class="fa-solid fa-circle"></i>
-    <!-- Icon for paper -->
-    <i v-else-if="choice === 'scissors'" class="fa-solid fa-square"></i>
-    <!-- Icon for scissors -->
-  </button>
+      <div class="buttonChoises">
+        <button
+          v-for="choice in possibleChoices"
+          @click="makeChoice(choice)"
+          :key="choice"
+        >
+          <i v-if="choice === 'rock'" class="fa-solid fa-star"></i>
+          <!-- Icon for rock -->
+          <i v-else-if="choice === 'paper'" class="fa-solid fa-circle"></i>
+          <!-- Icon for paper -->
+          <i v-else-if="choice === 'scissors'" class="fa-solid fa-square"></i>
+          <!-- Icon for scissors -->
+        </button>
+      </div>
+      <button @click="resetGame">Reset Game</button>
+    </div>
 
-  <br /><br />
-
-  <button @click="resetGame">Reset Game</button>
-
-  <h2>
-    Result: <span>{{ result }}</span>
-  </h2>
-
-  <p>Tablica wynków rozgrywki/ rozgrywek</p>
+    <!-- <p>Tablica wynków rozgrywki/ rozgrywek</p> -->
+  </div>
 </template>
 
 <style>
+.box {
+  /* font-family: "Nunito", sans-serif; */
+  color: white;
+  padding: 5rem;
+}
+.arena {
+  margin: 5em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* background-color: rgba(70, 68, 67, 0.438); */
+}
+
+.players {
+  display: flex;
+  gap: 5em;
+}
+
+.round {
+  text-align: center;
+}
+
+.players h2 {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #81f6f5;
+  font-size: 20px;
+  color: #0d61b2;
+}
+.choicePlayers {
+  display: flex;
+  gap: 5em;
+  margin-top: 5em;
+}
+.result {
+  margin: 2em 5em;
+  text-align: center;
+}
+
+button {
+  margin: 1em;
+}
+21 .buttonChoises i {
+  padding: 1em;
+}
 .win {
   color: green;
 }
@@ -154,4 +210,11 @@ const getIconClass = choice => {
 .draw {
   color: rgb(4, 0, 255);
 }
+
+/* .user {
+  background-image: url(../../assets/image/img1.jpg);
+  width: 100px;
+  height: 100px;
+  background-position: center;
+} */
 </style>

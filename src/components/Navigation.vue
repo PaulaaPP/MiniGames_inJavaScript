@@ -1,18 +1,38 @@
-<script setup></script>
-
 <template>
   <nav>
-    <router-link to="/">Home</router-link>
-    <router-link to="/contact">Contacts</router-link>
+    <div class="links">
+      <router-link to="/"
+        ><img src="../assets/image/myLogo3.png" alt="logo"
+      /></router-link>
+
+      <router-link class="link color-border" to="/">Home</router-link>
+      <router-link class="link color-border" to="/contact"
+        >Contacts</router-link
+      >
+    </div>
   </nav>
 </template>
 
 <style>
-nav a {
-  color: rgb(238, 243, 243);
-  font-size: 20px;
+nav a.link {
+  color: var(--white-primary);
+  font-size: 18px;
   text-decoration: none;
-  margin-right: 40px;
+  margin: 0 20px 0 40px;
+  background-color: var(--bg-black);
+}
+
+.links {
+  margin-top: 5px;
+}
+
+nav a.link:hover {
+  color: var(--orange-primary);
+  transition: color 0.7s;
+}
+nav img {
+  vertical-align: middle;
+  width: 70px;
 }
 
 nav {
@@ -22,9 +42,8 @@ nav {
   height: 50px;
   display: flex;
   align-items: center;
-  
-  /* this is need to make  nav visible top-of on carusel image*/
-  position: relative;
+  align-items: flex-start;
+  position: relative; /* this is needed to make nav visible top-of on carousel image */
   z-index: 100;
 }
 </style>
