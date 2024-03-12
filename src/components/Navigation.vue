@@ -21,12 +21,13 @@ nav a.link {
   margin: 0 20px 0 40px;
   background-color: var(--bg-black);
 }
-
+/* <a href="#/contact" class="router-link-active router-link-exact-active link color-border" aria-current="page">Contacts</a> */
 .links {
   margin-top: 5px;
 }
 
-nav a.link:hover {
+nav a.link:hover,
+nav a.router-link-active {
   color: var(--orange-primary);
   transition: color 0.7s;
 }

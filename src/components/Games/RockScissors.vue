@@ -1,5 +1,20 @@
 <script setup>
+import { Icon } from "@iconify/vue";
 import { ref, watch } from "vue";
+
+import Victory from "../Games/Victory.vue";
+import Defet from "./Defet.vue";
+import Draw from "./Draw.vue";
+
+const victoryPopup = ref(false);
+const defetPopup = ref(false);
+const drawPopup = ref(false);
+
+const Popup = {
+  Victory,
+  Defet,
+  Draw,
+};
 
 const computerChoice = ref("");
 const userChoice = ref("");
@@ -13,6 +28,20 @@ const possibleChoices = ["rock", "paper", "scissors"]; // buttons
 // wacher for fcaling final function
 watch([userWins, computerWins], () => {
   checkFinalResult();
+});
+
+// watcher for displaying  popup finall result after 3 rounds
+watch(round, newValue => {
+  if (newValue === 3) {
+    const finalResult = checkFinalResult();
+    if (finalResult === "win") {
+      victoryPopup.value = true;
+    } else if (finalResult === "lose") {
+      defetPopup.value = true;
+    } else if (finalResult === "draw") {
+      drawPopup.value = true;
+    }
+  }
 });
 
 // function v-for; calculate result and caling fn.generateComputerChoice and  calculateResult();
@@ -88,11 +117,11 @@ const resetGame = () => {
 const getIconClass = choice => {
   switch (choice) {
     case "rock":
-      return "fa-solid fa-star"; // Icon for rock
+      return "game-icons:rock";
     case "paper":
-      return "fa-solid fa-circle"; // Icon for paper
+      return "mdi:paper";
     case "scissors":
-      return "fa-solid fa-square"; // Icon for scissors
+      return "heroicons:scissors-16-solid";
     default:
       return "";
   }
@@ -101,31 +130,37 @@ const getIconClass = choice => {
 
 <template>
   <div class="box">
-    <!--  -->
     <div class="arena">
-      <!--  -->
+      <!-- players row -->
       <div class="players">
         <h2 class="computer">Computer</h2>
         <!--  -->
         <div class="round">
-          <p>round</p>
+          <p>Round</p>
           <span>{{ round }}</span>
         </div>
 
         <h2>User</h2>
       </div>
 
+      <!-- choises row -->
       <div class="choicePlayers">
-        <span
-          >{{ computerChoice }}<i :class="getIconClass(computerChoice)"></i
-        ></span>
-        <p>VS</p>
-        <span class="user"
-          >{{ userChoice }} <i :class="getIconClass(userChoice)"></i
-        ></span>
+        <div class="centerChoice">
+          <Icon :icon="getIconClass(computerChoice)" />
+          <span>{{ computerChoice }} </span>
+        </div>
+
+        <p>
+          <img src="../../assets/image/VS.png" alt="vs" />
+        </p>
+
+        <div class="centerChoice">
+          <Icon :icon="getIconClass(userChoice)" />
+          <span class="user">{{ userChoice }} </span>
+        </div>
       </div>
 
-      <!-- <div class="users"></div> -->
+      <!-- buttons rows -->
       <div class="result">
         <h2>Result</h2>
         <span>{{ result }}</span>
@@ -137,34 +172,80 @@ const getIconClass = choice => {
           @click="makeChoice(choice)"
           :key="choice"
         >
-          <i v-if="choice === 'rock'" class="fa-solid fa-star"></i>
-          <!-- Icon for rock -->
-          <i v-else-if="choice === 'paper'" class="fa-solid fa-circle"></i>
-          <!-- Icon for paper -->
-          <i v-else-if="choice === 'scissors'" class="fa-solid fa-square"></i>
-          <!-- Icon for scissors -->
+          <Icon v-if="choice === 'rock'" icon="game-icons:rock" width="3rem" />
+          <Icon v-else-if="choice === 'paper'" icon="mdi:paper" width="3rem" />
+          <Icon
+            v-else-if="choice === 'scissors'"
+            icon="heroicons:scissors-16-solid"
+            width="3rem"
+          />
         </button>
       </div>
-      <button @click="resetGame">Reset Game</button>
-    </div>
 
-    <!-- <p>Tablica wynków rozgrywki/ rozgrywek</p> -->
+      <!-- Popup Victory -->
+      <transition name="popup" appear>
+        <Victory class="victory" v-if="victoryPopup">
+          <div>
+            <button class="closeButton" @click="victoryPopup = false">
+              Close
+            </button>
+          </div>
+        </Victory>
+      </transition>
+
+      <!-- Popup Defet-->
+      <transition name="popup">
+        <Defet class="defet" v-if="defetPopup">
+          <div>
+            <button class="closeButton" @click="defetPopup = false">
+              Close
+            </button>
+          </div>
+        </Defet>
+      </transition>
+      <!-- Popup Draw-->
+      <transition name="popup">
+        <Draw class="draw" v-if="drawPopup">
+          <div>
+            <button class="closeButton" @click="drawPopup = false">
+              Close
+            </button>
+          </div>
+        </Draw>
+      </transition>
+      <button class="resetBtn" @click="resetGame">Reset Game</button>
+    </div>
   </div>
 </template>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+
 .box {
-  /* font-family: "Nunito", sans-serif; */
+  font-family: "Orbitron", sans-serif;
   color: white;
   padding: 5rem;
+  background-color: rgba(0, 0, 0, 0.137);
+  height: 1000%;
 }
 .arena {
   margin: 5em 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.centerChoice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 12px;
+}
 
-  /* background-color: rgba(70, 68, 67, 0.438); */
+p img {
+  height: 80px;
 }
 
 .players {
@@ -172,49 +253,106 @@ const getIconClass = choice => {
   gap: 5em;
 }
 
-.round {
+.round,
+.result {
   text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #ffe74c;
+  -webkit-text-stroke: 1px var(--red-border);
+}
+
+.result {
+  height: 115px;
 }
 
 .players h2 {
-  padding: 15px;
-  border-radius: 10px;
-  background-color: #81f6f5;
-  font-size: 20px;
-  color: #0d61b2;
+  text-align: center;
+  padding: 24px 10px;
+  border-radius: 15px;
+  background-color: var(--blue-bg);
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--blue-dark);
+  width: 100px;
+  border: solid 1px var(--pink-primary);
+  box-shadow: var(--pink-primary) 0px 0px 10px;
 }
 .choicePlayers {
   display: flex;
   gap: 5em;
   margin-top: 5em;
 }
+.choicePlayers span {
+  -webkit-text-stroke: 1px var(--blue-bg);
+  color: transparent;
+}
 .result {
   margin: 2em 5em;
   text-align: center;
 }
-
-button {
-  margin: 1em;
+.centerChoice svg {
+  color: #ffe74c;
+  width: 50px;
+  text-align: center;
+  height: 80px;
+  width: 120px;
+  text-align: center;
 }
-21 .buttonChoises i {
-  padding: 1em;
-}
-.win {
-  color: green;
-}
-
-.lose {
-  color: red;
+.buttonChoises svg {
+  color: var(--blue-bg);
 }
 
+.buttonChoises button {
+  padding: 5px;
+  margin: 0 2em 2em;
+  background-color: var(--blue-primary);
+  border: solid 1px var(--pink-primary);
+  border-radius: 5px;
+  box-shadow: var(--pink-primary) 0px 0px 10px;
+}
+
+.victory,
+.defet,
 .draw {
-  color: rgb(4, 0, 255);
+  text-align: center;
 }
 
-/* .user {
-  background-image: url(../../assets/image/img1.jpg);
-  width: 100px;
-  height: 100px;
-  background-position: center;
-} */
+.victory button,
+.defet button,
+.draw button {
+  padding: 10px;
+  background-color: #e0aa1b;
+  color: #4c3f1d;
+  font-weight: 800;
+  border: solid 2px #4c3f1d;
+  border-radius: 5px;
+  box-shadow: #4c3f1d9a 1px 1px 13px;
+}
+
+.resetBtn {
+  font-family: "Orbitron", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--blue-dark);
+  background-color: var(--blue-bg);
+  border: solid 2px var(--pink-primary);
+  box-shadow: var(--pink-primary) 0px 0px 10px;
+  border-radius: 15px;
+  margin: 2.5em 5em;
+  padding: 15px;
+}
+
+/* style fot transition */
+
+.popup-enter-active,
+.popup-leave-active {
+  transition: opacity 0.5s;
+}
+.popup-enter-from,
+.popup-leave-to {
+  opacity: 0;
+  /* transform: translate(-50px); */
+}
 </style>

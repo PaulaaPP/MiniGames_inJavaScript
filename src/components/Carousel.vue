@@ -67,7 +67,10 @@ function showSlider(type) {
     <div class="list">
       <!-- item 1 -->
       <div class="item">
-        <img src="../assets/image/arena_rockandScrissors.png" />
+        <img
+          src="../assets/image/rockpaperBgImage2.png
+        "
+        />
         <div class="content">
           <!-- <div class="author">PaulaPP</div> -->
           <div class="color-border">
@@ -82,7 +85,6 @@ function showSlider(type) {
           </div>
 
           <div class="buttons">
-            <!-- <button>Play the Game</button> -->
             <button class="color-border">
               <router-link to="/rockandScissors">Play Game</router-link>
             </button>
@@ -247,11 +249,11 @@ header a {
 .carousel .list .item .content {
   position: absolute;
   top: 20%;
-  width: 1140px;
+  width: 1200px;
   max-width: 80%;
   left: 50%;
   transform: translateX(-50%);
-  padding-right: 30%;
+  padding-right: 40%;
   box-sizing: border-box;
   color: #fff;
   text-shadow: 0 5px 10px #0004;
@@ -266,7 +268,7 @@ header a {
 }
 .carousel .list .item .topic {
   font-size: 4em;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 1.3em;
   margin-bottom: 0.5em;
 }

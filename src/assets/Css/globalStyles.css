@@ -2,6 +2,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Changa+One&display=swap");
+
 :root {
   --white-primary: #eeebea;
   --orange-primary: #f63e02;
@@ -13,6 +17,13 @@
     rgba(255, 146, 68, 0.644) 35%,
     rgba(255, 255, 255, 0.253) 100%
   );
+
+  /* rock and scissors */
+  --pink-primary: #c453ab;
+  --red-border: #d02142;
+  --blue-primary: #358dbdd3;
+  --blue-bg: #81f6f5;
+  --blue-dark: #0d61b2;
 }
 
 .color-border {
