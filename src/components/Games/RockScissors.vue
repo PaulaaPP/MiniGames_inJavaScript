@@ -10,12 +10,6 @@ const victoryPopup = ref(false);
 const defetPopup = ref(false);
 const drawPopup = ref(false);
 
-const Popup = {
-  Victory,
-  Defet,
-  Draw,
-};
-
 const computerChoice = ref("");
 const userChoice = ref("");
 const result = ref(null);
@@ -25,7 +19,13 @@ const userWins = ref(0);
 let computerWins = ref(0);
 const possibleChoices = ["rock", "paper", "scissors"]; // buttons
 
-// wacher for fcaling final function
+const Popup = {
+  Victory,
+  Defet,
+  Draw,
+};
+
+// wacher for caling final function
 watch([userWins, computerWins], () => {
   checkFinalResult();
 });
@@ -143,7 +143,7 @@ const getIconClass = choice => {
         <h2>User</h2>
       </div>
 
-      <!-- choises row -->
+      <!-- choises players row -->
       <div class="choicePlayers">
         <div class="centerChoice">
           <Icon :icon="getIconClass(computerChoice)" />
@@ -160,7 +160,7 @@ const getIconClass = choice => {
         </div>
       </div>
 
-      <!-- buttons rows -->
+      <!-- buttons  choise  row-->
       <div class="result">
         <h2>Result</h2>
         <span>{{ result }}</span>
@@ -353,6 +353,179 @@ p img {
 .popup-enter-from,
 .popup-leave-to {
   opacity: 0;
-  /* transform: translate(-50px); */
+}
+
+/* ***  MEDIA QUERIES *** */
+@media screen and (max-width: 1280px) {
+  .arena {
+    margin: 2em 0;
+  }
+
+  .choicePlayers {
+    gap: 0.5em;
+    margin-top: 4em;
+  }
+
+  .resetBtn {
+    margin: 3em 2em;
+  }
+
+  .popup-content img {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .arena {
+    margin: 5em 0;
+  }
+
+  .choicePlayers {
+    margin-top: 4em;
+  }
+
+  .result {
+    margin: 1em 5em;
+    font-size: 15px;
+  }
+}
+
+/* ***  TABLETS *** */
+@media screen and (max-width: 768px) {
+  .arena {
+    margin: 5em 0;
+  }
+
+  .choicePlayers {
+    margin-top: 4em;
+  }
+
+  .centerChoice svg {
+    height: 63px;
+    width: 126px;
+  }
+
+  .result {
+    margin: 1em 5em;
+    font-size: 15px;
+  }
+}
+
+/* ***  MOBILE *** */
+@media screen and (max-width: 428px) {
+  .arena {
+    margin: 3em 0;
+  }
+
+  p img {
+    height: 72px;
+  }
+
+  .round,
+  .result {
+    font-size: 15px;
+  }
+
+  .result {
+    font-size: 10px;
+    margin: 2em 0px -20px 0px;
+  }
+
+  .players {
+    gap: 2em;
+  }
+
+  .players h2 {
+    padding: 22px 1px;
+    font-size: 14px;
+    width: 81px;
+  }
+
+  .choicePlayers {
+    gap: 0.5em;
+    margin-top: 4em;
+  }
+
+  .centerChoice {
+    gap: 8px;
+    font-size: 15px;
+    margin: 0 12px;
+  }
+
+  .centerChoice svg {
+    height: 63px;
+    width: 126px;
+  }
+
+  .buttonChoises {
+    display: flex;
+    width: 80vw;
+    justify-content: center;
+  }
+
+  .buttonChoises button {
+    margin: 0px 10px;
+  }
+
+  .popup-content img {
+    height: 300px;
+  }
+
+  .resetBtn {
+    font-size: 12px;
+    margin: 4em 3em;
+    padding: 7px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .arena {
+    margin: 1em 0;
+  }
+
+  .result {
+    font-size: 8px;
+    margin: -2em 0px -40px 0px;
+  }
+
+  .centerChoice {
+    margin: 0px;
+  }
+
+  .buttonChoises {
+    width: 150%;
+  }
+
+  .buttonChoises button {
+    margin: 1px 9px;
+  }
+
+  .buttonChoises svg {
+    height: 2.5em;
+  }
+
+  .choicePlayers {
+    margin-top: 2em;
+  }
+
+  .players h2 {
+    padding: 14px 1px;
+    font-size: 13px;
+    width: 76px;
+  }
+
+  .centerChoice svg {
+    height: 50px;
+    width: 126px;
+  }
+
+  .popup-content img {
+    height: 200px;
+  }
+  .resetBtn {
+    font-size: 11px;
+    margin: 3em 2em;
+    padding: 7px;
+  }
 }
 </style>

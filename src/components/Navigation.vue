@@ -2,7 +2,7 @@
   <nav>
     <div class="links">
       <router-link to="/"
-        ><img src="../assets/image/myLogo3.png" alt="logo"
+        ><img src="../assets/image/Logo_transparent.png" alt="logo"
       /></router-link>
 
       <router-link class="link color-border" to="/">Home</router-link>
@@ -21,7 +21,7 @@ nav a.link {
   margin: 0 20px 0 40px;
   background-color: var(--bg-black);
 }
-/* <a href="#/contact" class="router-link-active router-link-exact-active link color-border" aria-current="page">Contacts</a> */
+
 .links {
   margin-top: 5px;
 }
@@ -46,5 +46,35 @@ nav {
   align-items: flex-start;
   position: relative; /* this is needed to make nav visible top-of on carousel image */
   z-index: 100;
+}
+
+@media screen and (max-width: 428px) {
+  nav {
+    max-width: 102%;
+  }
+
+  nav a.link {
+    font-size: 12px;
+    margin: 0 11px 0 13px;
+  }
+
+  nav img {
+    width: 56px;
+  }
+
+  header a {
+    margin-right: 1px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  header a {
+    margin-right: 1px;
+  }
+
+  nav a.link {
+    font-size: 12px;
+    margin: 0 11px 0 10px;
+  }
 }
 </style>
