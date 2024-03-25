@@ -1,29 +1,48 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,700&display=swap"); */
 
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap"); */
 
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Changa+One&display=swap");
 
 :root {
+  /* global style */
   --white-primary: #eeebea;
   --orange-primary: #f63e02;
   --orange-secondary: #e6682d;
   --bg-black: rgba(0, 0, 0, 0.514);
   --linear-gradient: linear-gradient(
     138deg,
-    rgba(246, 62, 2, 1) 0%,
-    rgba(255, 146, 68, 0.644) 35%,
-    rgba(255, 255, 255, 0.253) 100%
+    #f63e02 0%,
+    #ff9244a4 35%,
+    #ffffff41 100%
   );
 
-  /* rock and scissors */
+  /* Rock and scissors game */
   --pink-primary: #c453ab;
   --red-border: #d02142;
   --blue-primary: #358dbdd3;
   --blue-bg: #81f6f5;
   --blue-dark: #0d61b2;
+
+  /* Memory game*/
+  --bg-color: linear-gradient(
+    135deg,
+    #156492 0%,
+    #156492 17%,
+    #156492 17%,
+    #297f83 33%,
+    #338c85 48%,
+    #297f83 74%,
+    #357295 98%
+  );
+  --blue-color: #094074;
+  --orange-primary: #fb8a0a;
+  --sea-secondary: #30898f;
+  --easy-color: #0daa59;
+  --medium-color: #f4f80c;
+  --hard-color: #d02142;
 }
 
 .color-border {

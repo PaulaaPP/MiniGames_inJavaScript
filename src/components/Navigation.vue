@@ -13,7 +13,7 @@
   </nav>
 </template>
 
-<style>
+<style scoped>
 nav a.link {
   color: var(--white-primary);
   font-size: 18px;

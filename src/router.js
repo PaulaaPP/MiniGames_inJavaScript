@@ -16,6 +16,11 @@ const routes = [
     name: "rockandscissors",
     component: () => import("./views/RockandScissorsView.vue"),
   },
+  {
+    path: "/memory",
+    name: "memory",
+    component: () => import("./views/MemoryView.vue"),
+  },
 ];
 
 const router = createRouter({

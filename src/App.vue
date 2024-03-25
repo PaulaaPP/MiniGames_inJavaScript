@@ -31,6 +31,10 @@ body,
   background-color: #050505a1;
 }
 
+body h1 h2 h3 {
+  font-weight: normal;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease-in-out;

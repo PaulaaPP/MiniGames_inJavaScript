@@ -77,20 +77,24 @@ function showSlider(type) {
       </div>
       <!-- item 2 -->
       <div class="item">
-        <img src="../assets/image/img2.jpg" />
+        <img src="../assets/image/Memory/memory_thumbnail.png" />
         <div class="content">
-          <div class="title">DESIGN SLIDER</div>
-          <div class="topic">ANIMAL</div>
-          <div class="des">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi,
-            rem magnam nesciunt minima placeat, itaque eum neque officiis unde,
-            eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut
-            doloribus non numquam. Explicabo, laboriosam nisi reprehenderit
-            tempora at laborum natus unde. Ut, exercitationem eum aperiam illo
-            illum laudantium?
+          <div class="color-border">
+            <div class="title">Game</div>
+            <div class="topic">Memory</div>
+            <div class="description">
+              Exercise your memory with our captivating Memory Game! Test your
+              recall skills by matching pairs of cards in this classic game of
+              concentration. With colorful themes and varying difficulty levels,
+              challenge yourself or compete with friends to see who can remember
+              the most matches. Sharpen your mind and have fun with our
+              addictive Memory Game today!
+            </div>
           </div>
           <div class="buttons">
-            <button>SEE MORE</button>
+            <button class="color-border">
+              <router-link to="/memory">Play Game</router-link>
+            </button>
           </div>
         </div>
       </div>
@@ -144,9 +148,9 @@ function showSlider(type) {
       </div>
       <!-- thumnail 2 -->
       <div class="item">
-        <img src="../assets/image/img2.jpg" />
+        <img src="../assets/image/Memory/memory_thumbnail.png" />
         <div class="content">
-          <div class="title">Name Slider</div>
+          <div class="title">Memory</div>
         </div>
       </div>
       <!-- thumnail 3 -->
@@ -178,3 +182,7 @@ function showSlider(type) {
     <div class="time"></div> -->
   </div>
 </template>
+
+<style>
+/* all styles is on caruselStyles.css file */
+</style>
