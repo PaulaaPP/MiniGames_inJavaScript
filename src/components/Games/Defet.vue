@@ -28,4 +28,10 @@ img {
   height: 600px;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 428px) {
+  img {
+    height: 300px;
+  }
+}
 </style>

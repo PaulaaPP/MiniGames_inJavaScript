@@ -12,6 +12,7 @@ import RockScissors from "../components/Games/RockScissors.vue";
 .container {
   margin-top: -50px;
   height: 100vh;
+  overflow: hidden; /* preventing scrolling page */
   background-position: center;
   background-size: cover;
   background-image: url(../assets/image/arenaBG.jpg);

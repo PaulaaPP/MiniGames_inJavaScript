@@ -137,7 +137,7 @@ const getIconClass = choice => {
         <!--  -->
         <div class="round">
           <p>Round</p>
-          <span>{{ round }}</span>
+          <span> 3 / {{ round }}</span>
         </div>
 
         <h2>User</h2>
@@ -227,6 +227,7 @@ const getIconClass = choice => {
   padding: 5rem;
   background-color: rgba(0, 0, 0, 0.137);
   height: 1000%;
+  overflow: hidden;
 }
 .arena {
   margin: 5em 0;

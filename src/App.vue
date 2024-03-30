@@ -27,7 +27,7 @@ body,
   margin: 0;
   padding: 0;
   font-family: "Changa One", sans-serif;
-  overflow: hidden; /* preventing scrolling page*/
+  /* overflow: hidden; preventing scrolling page */
   background-color: #050505a1;
 }
 
