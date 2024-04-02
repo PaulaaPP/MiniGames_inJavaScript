@@ -2,7 +2,7 @@
 import { Icon } from "@iconify/vue";
 import { ref, watch } from "vue";
 
-import Victory from "../Games/Victory.vue";
+import Victory from "./Victory.vue";
 import Defet from "./Defet.vue";
 import Draw from "./Draw.vue";
 
@@ -151,7 +151,7 @@ const getIconClass = choice => {
         </div>
 
         <p>
-          <img src="../../assets/image/VS.png" alt="vs" />
+          <img src="../../../assets/image/RockScissors/VS.png" alt="vs" />
         </p>
 
         <div class="centerChoice">
@@ -312,6 +312,7 @@ p img {
   border: solid 1px var(--pink-primary);
   border-radius: 5px;
   box-shadow: var(--pink-primary) 0px 0px 10px;
+  cursor: pointer;
 }
 
 .victory,
@@ -343,6 +344,7 @@ p img {
   border-radius: 15px;
   margin: 2.5em 5em;
   padding: 15px;
+  cursor: pointer;
 }
 
 /* style fot transition */

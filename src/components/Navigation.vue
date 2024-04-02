@@ -16,14 +16,14 @@
 <style scoped>
 nav a.link {
   color: var(--white-primary);
-  font-size: 18px;
+  font-size: 16px;
   text-decoration: none;
-  margin: 0 20px 0 40px;
+  margin: 0 9px 0 40px;
   background-color: var(--bg-black);
 }
 
 .links {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 nav a.link:hover,
@@ -33,7 +33,7 @@ nav a.router-link-active {
 }
 nav img {
   vertical-align: middle;
-  width: 70px;
+  width: 65px;
 }
 
 nav {
@@ -48,33 +48,28 @@ nav {
   z-index: 100;
 }
 
-@media screen and (max-width: 428px) {
-  nav {
-    max-width: 102%;
+@media screen and (max-width: 600px) {
+  nav img {
+    width: 50px;
+    margin: 0 10px;
   }
-
   nav a.link {
     font-size: 12px;
     margin: 0 11px 0 13px;
   }
-
-  nav img {
-    width: 56px;
-  }
-
-  header a {
-    margin-right: 1px;
-  }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 425px) {
   header a {
     margin-right: 1px;
   }
+  nav img {
+    margin: 0 0;
+  }
 
-  nav a.link {
-    font-size: 12px;
-    margin: 0 11px 0 10px;
+  nav {
+    width: 1140px;
+    max-width: 100%;
   }
 }
 </style>

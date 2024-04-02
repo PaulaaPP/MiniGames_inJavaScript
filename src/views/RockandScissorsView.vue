@@ -1,5 +1,5 @@
 <script setup>
-import RockScissors from "../components/Games/RockScissors.vue";
+import RockScissors from "../components/Games/RockandScossors/RockScissors.vue";
 </script>
 
 <template>
@@ -15,6 +15,6 @@ import RockScissors from "../components/Games/RockScissors.vue";
   overflow: hidden; /* preventing scrolling page */
   background-position: center;
   background-size: cover;
-  background-image: url(../assets/image/arenaBG.jpg);
+  background-image: url(../assets/image/RockScissors/arenaBG.jpg);
 }
 </style>

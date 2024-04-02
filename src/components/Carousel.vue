@@ -53,7 +53,7 @@ function showSlider(type) {
       <!-- item 1 -->
       <div class="item">
         <img
-          src="../assets/image/rockpaperBgImage2.png
+          src="../assets/image/RockScissors/rockpaperBgImage2.png
         "
         />
         <div class="content">
@@ -85,10 +85,8 @@ function showSlider(type) {
             <div class="description">
               Exercise your memory with our captivating Memory Game! Test your
               recall skills by matching pairs of cards in this classic game of
-              concentration. With colorful themes and varying difficulty levels,
-              challenge yourself or compete with friends to see who can remember
-              the most matches. Sharpen your mind and have fun with our
-              addictive Memory Game today!
+              concentration. Sharpen your mind and have fun with our addictive
+              Memory Game today!
             </div>
           </div>
           <div class="buttons">
@@ -100,7 +98,7 @@ function showSlider(type) {
       </div>
       <!-- item 3 -->
       <div class="item">
-        <img src="../assets/image/img3.jpg" />
+        <img src="../assets/image/blank.jpg" />
         <div class="content">
           <div class="title">DESIGN SLIDER</div>
           <div class="topic">ANIMAL</div>
@@ -119,7 +117,7 @@ function showSlider(type) {
       </div>
       <!-- item 4 -->
       <div class="item">
-        <img src="../assets/image/img4.jpg" />
+        <img src="../assets/image/blank.jpg" />
         <div class="content">
           <div class="title">DESIGN SLIDER</div>
           <div class="topic">ANIMAL</div>
@@ -141,7 +139,7 @@ function showSlider(type) {
     <div class="thumbnail">
       <!-- thumnail 1 -->
       <div class="item">
-        <img src="../assets/image/arena_rockandScrissors.png" />
+        <img src="../assets/image/RockScissors/rockpaperBgImage2.png" />
         <div class="content">
           <div class="title">Rock and Scissors</div>
         </div>
@@ -155,14 +153,14 @@ function showSlider(type) {
       </div>
       <!-- thumnail 3 -->
       <div class="item">
-        <img src="../assets/image/img3.jpg" />
+        <img src="../assets/image/blank.jpg" />
         <div class="content">
           <div class="title">Name Slider</div>
         </div>
       </div>
       <!-- thumnail 4 -->
       <div class="item">
-        <img src="../assets/image/img4.jpg" />
+        <img src="../assets/image/blank.jpg" />
         <div class="content">
           <div class="title">Name Slider</div>
         </div>

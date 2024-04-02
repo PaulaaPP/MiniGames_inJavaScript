@@ -325,7 +325,7 @@ const toggleTimer = () => {
   } else {
     timerInterval = setInterval(() => {
       timeElapsed.value++;
-    }, 1000);
+    }, 1200);
   }
   timeRunning.value = !timeRunning.value;
 };
@@ -448,7 +448,7 @@ span {
 .box {
   font-family: "Orbitron", sans-serif;
   color: var(--orange-primary);
-  padding: 5rem;
+  padding: 5em 4em;
   background: var(--bg-color);
   height: 100%;
 }
@@ -469,6 +469,7 @@ button {
   padding: 0.5em 0;
   margin: 1rem;
   width: 5.5em;
+  cursor: pointer;
 }
 .reset_TimeBtns button {
   margin: 2rem 0.5rem;
@@ -479,6 +480,7 @@ button {
   border-color: var(--blue-color);
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
 }
 .game-info {
   display: flex;
@@ -494,6 +496,7 @@ button {
   height: 7rem;
   margin: 5px;
   align-self: center;
+  cursor: pointer;
 }
 .grid {
   display: flex;
@@ -549,12 +552,22 @@ button {
   }
 }
 @media screen and (max-width: 834px) {
+  .box {
+    padding: 5em 0 1em;
+  }
   .grid {
     width: 100%;
   }
   .grid img {
     width: 6.3rem;
     height: 6.3rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .grid img {
+    width: 5em;
+    height: 5em;
   }
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div class="popup">
     <div class="popup-content">
-      <img src="../../assets/image/defet.png" alt="" />
+      <img src="../../../assets/image/RockScissors/draw.png" alt="" />
       <slot></slot>
     </div>
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "Defet",
+  name: "Draw",
 };
 </script>
 
@@ -19,7 +19,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ac120f;
+  background-color: #827c7c;
   padding: 20px;
   border-radius: 8px;
 }

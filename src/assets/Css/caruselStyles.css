@@ -11,10 +11,6 @@ header {
   position: relative;
   z-index: 100;
 }
-header a {
-  color: var(--white-primary);
-  margin-right: 40px;
-}
 
 /* Part I */
 /* carousel */
@@ -72,9 +68,10 @@ header a {
 .carousel .list .item .buttons button {
   font-size: 15px;
   font-weight: bold;
-  font-family: Poppins;
+  font-family: "Changa One", sans-serif;
   font-weight: 500;
   text-align: center;
+  cursor: pointer;
 }
 
 a {
@@ -148,6 +145,7 @@ a:hover {
   font-family: monospace;
   font-weight: bold;
   transition: 0.5s;
+  cursor: pointer;
 }
 .arrows button:hover {
   background-color: #fff;
@@ -237,15 +235,6 @@ a:hover {
 /* Part V */
 /* running time */
 
-.carousel .time {
-  position: absolute;
-  z-index: 1000;
-  width: 0%;
-  height: 3px;
-  background-color: #f1683a;
-  left: 0;
-  top: 0;
-}
 
 .carousel.next .time,
 .carousel.prev .time {
@@ -307,30 +296,31 @@ a:hover {
   }
 }
 
-@media screen and (max-width: 678px) {
-  .carousel .list .item .content {
-    padding-right: 0;
-  }
-  .carousel .list .item .content .title {
+@media screen and (max-width: 1024px) {
+  .carousel .list .item .topic {
     font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .content .description {
+    font-size: 15px;
   }
 }
 
 @media screen and (max-width: 428px) {
   header a {
-    /* color: var(--white-primary); */
     margin-right: 10px;
   }
   .carousel .list .item .content .title {
-    font-size: 20px;
+    font-size: 15px;
+  }
+  .content .description {
+    font-size: 13px;
   }
 
   .carousel .list .item .topic {
-    font-size: 30px;
-  }
-
-  .content .description {
-    font-size: 15px;
+    font-size: 20px;
   }
 
   .thumbnail .item {
@@ -345,13 +335,8 @@ a:hover {
 
   .carousel .list .item .content {
     top: 25%;
-    /* width: 1200px; */
   }
   .carousel .list .item .content .title {
-    font-size: 20px;
-  }
-
-  .carousel .list .item .topic {
     font-size: 20px;
   }
 

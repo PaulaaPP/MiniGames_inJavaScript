@@ -1,7 +1,7 @@
 <template>
   <div class="popup">
     <div class="popup-content">
-      <img src="../../assets/image/draw.png" alt="" />
+      <img src="../../../assets/image/RockScissors/vitoryCup.png" alt="" />
       <slot></slot>
     </div>
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "Draw",
+  name: "Victory",
 };
 </script>
 
@@ -19,14 +19,14 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #827c7c;
+  background-color: #568bc5;
   padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 img {
   height: 600px;
-  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 428px) {
