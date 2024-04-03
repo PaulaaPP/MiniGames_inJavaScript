@@ -354,34 +354,36 @@ function resetGame() {
   <div class="box">
     <div class="board">
       <!-- levels buttons-->
-      <div class="levels">
-        <h2>Yor level:</h2>
-        <button
-          @click="setChosenCardArray(cardArrayEasy)"
-          :class="{ easy: chosenCardArray === cardArrayEasy }"
-        >
-          Easy 12 cards
-        </button>
-        <button
-          @click="setChosenCardArray(cardArrayMedium)"
-          :class="{ medium: chosenCardArray === cardArrayMedium }"
-        >
-          Medium 14 cards
-        </button>
-        <button
-          @click="setChosenCardArray(cardArrayHard)"
-          :class="{ hard: chosenCardArray === cardArrayHard }"
-        >
-          Hard 16 cards
-        </button>
-      </div>
+      <div class="changeVisibility">
+        <div class="levels">
+          <h2>Yor level:</h2>
+          <button
+            @click="setChosenCardArray(cardArrayEasy)"
+            :class="{ easy: chosenCardArray === cardArrayEasy }"
+          >
+            Easy 12 cards
+          </button>
+          <button
+            @click="setChosenCardArray(cardArrayMedium)"
+            :class="{ medium: chosenCardArray === cardArrayMedium }"
+          >
+            Medium 14 cards
+          </button>
+          <button
+            @click="setChosenCardArray(cardArrayHard)"
+            :class="{ hard: chosenCardArray === cardArrayHard }"
+          >
+            Hard 16 cards
+          </button>
+        </div>
 
-      <!-- reset/start buttons -->
-      <div class="reset_TimeBtns">
-        <button @click="resetGame">Reset Game</button>
-        <button @click="toggleTimer">
-          {{ timeRunning ? "Stop Time" : "StartTime" }}
-        </button>
+        <!-- reset/start buttons -->
+        <div class="reset_TimeBtns">
+          <button @click="resetGame">Reset Game</button>
+          <button @click="toggleTimer">
+            {{ timeRunning ? "Stop Time" : "StartTime" }}
+          </button>
+        </div>
       </div>
 
       <div class="game-info">
@@ -428,23 +430,7 @@ function resetGame() {
   </div>
 </template>
 
-<style scoped>
-span {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.closeButton {
-  border-radius: 10px;
-  border-color: var(--orange-primary);
-  background-color: var(--orange-primary);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  color: var(--blue-color);
-  font-weight: 800;
-  padding: 20px;
-  margin: 3em 10em;
-}
-
+<style>
 .box {
   font-family: "Orbitron", sans-serif;
   color: var(--orange-primary);
@@ -458,6 +444,21 @@ button {
 .board {
   text-align: center;
 }
+
+/* animation for levels buttons */
+.changeVisibility {
+  animation: hiddenLevels linear forwards;
+  animation-timeline: view();
+  animation-range-start: 90vh;
+  animation-range-end: 100vh;
+}
+
+@keyframes hiddenLevels {
+  100% {
+    opacity: 10%;
+  }
+}
+
 .levels button {
   color: var(--orange-primary);
   background-color: transparent;
@@ -510,7 +511,7 @@ button {
   padding: 5rem;
 }
 
-/*** active class ***/
+/*** active class for levels buttons ***/
 .hidden {
   visibility: hidden;
 }
@@ -530,8 +531,35 @@ button {
   font-weight: bold !important;
 }
 
+/* for Final popUp */
+.final p {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+span {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.closeButton {
+  border-radius: 10px;
+  border-color: var(--orange-primary);
+  background-color: var(--orange-primary);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: var(--blue-color);
+  font-weight: 800;
+  padding: 20px;
+  margin: 4em;
+}
+
 /* ========== @media screen =================*/
 @media screen and (min-width: 2560px) {
+  .changeVisibility {
+    margin-top: 5rem;
+  }
+
   .grid {
     width: 50%;
   }
@@ -548,16 +576,14 @@ button {
 
 @media screen and (max-width: 1024px) {
   .grid {
-    width: 80%;
+    width: 100%;
   }
 }
 @media screen and (max-width: 834px) {
   .box {
     padding: 5em 0 1em;
   }
-  .grid {
-    width: 100%;
-  }
+
   .grid img {
     width: 6.3rem;
     height: 6.3rem;
@@ -568,6 +594,12 @@ button {
   .grid img {
     width: 5em;
     height: 5em;
+  }
+
+  .game-info {
+    p {
+      font-size: 15px;
+    }
   }
 }
 

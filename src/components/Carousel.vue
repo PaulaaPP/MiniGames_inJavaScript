@@ -176,8 +176,6 @@ function showSlider(type) {
         >
       </button>
     </div>
-    <!-- time running
-    <div class="time"></div> -->
   </div>
 </template>
 

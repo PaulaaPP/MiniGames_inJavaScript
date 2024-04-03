@@ -19,7 +19,7 @@ div {
   /* width: 50%;
   height: 50%; */
   border-radius: 10px;
-  padding: 3em;
+  padding: 5em;
   transform: translate(-50%);
   background-color: var(--blue-color);
   color: var(--orange-primary);
@@ -32,11 +32,13 @@ p {
   font-size: 1.5em;
 }
 
-@media screen and (max-width: 428px) {
+@media screen and (max-width: 800px) {
   div {
-    padding: 0.5em 0;
+    padding: 0.5em 1.5rem;
   }
+}
 
+@media screen and (max-width: 428px) {
   h1 {
     font-size: 1em;
   }

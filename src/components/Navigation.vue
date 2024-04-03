@@ -1,19 +1,21 @@
 <template>
   <nav>
-    <div class="links">
-      <router-link to="/"
-        ><img src="../assets/image/Logo_transparent.png" alt="logo"
-      /></router-link>
+    <div class="lol2">
+      <div class="links">
+        <router-link to="/"
+          ><img src="../assets/image/Logo_transparent.png" alt="logo"
+        /></router-link>
 
-      <router-link class="link color-border" to="/">Home</router-link>
-      <router-link class="link color-border" to="/contact"
-        >Contacts</router-link
-      >
+        <router-link class="link color-border" to="/">Home</router-link>
+        <router-link class="link color-border" to="/contact"
+          >Contacts</router-link
+        >
+      </div>
     </div>
   </nav>
 </template>
 
-<style scoped>
+<style>
 nav a.link {
   color: var(--white-primary);
   font-size: 16px;
@@ -37,6 +39,7 @@ nav img {
 }
 
 nav {
+  /* position: sticky; */
   width: 1140px;
   max-width: 80%;
   margin: auto;
@@ -44,7 +47,8 @@ nav {
   display: flex;
   align-items: center;
   align-items: flex-start;
-  position: relative; /* this is needed to make nav visible top-of on carousel image */
+  position: relative;
+  /* this is needed to make nav visible top-of on carousel image */
   z-index: 100;
 }
 
