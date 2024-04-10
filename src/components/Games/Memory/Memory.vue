@@ -12,229 +12,229 @@ const finalpopup = ref(false);
 const cardArrayEasy = ref([
   {
     name: "1",
-    img: "/Memory/12cards/1.jpg",
+    img: "/Memory/12cards/1.webp",
   },
   {
     name: "2",
-    img: "/Memory/12cards/2.jpg",
+    img: "/Memory/12cards/2.webp",
   },
   {
     name: "3",
-    img: "/Memory/12cards/3.jpg",
+    img: "/Memory/12cards/3.webp",
   },
   {
     name: "4",
-    img: "/Memory/12cards/4.jpg",
+    img: "/Memory/12cards/4.webp",
   },
   {
     name: "5",
-    img: "/Memory/12cards/5.jpg",
+    img: "/Memory/12cards/5.webp",
   },
   {
     name: "6",
-    img: "/Memory/12cards/6.jpg",
+    img: "/Memory/12cards/6.webp",
   },
   {
     name: "1",
-    img: "/Memory/12cards/1.jpg",
+    img: "/Memory/12cards/1.webp",
   },
   {
     name: "2",
-    img: "/Memory/12cards/2.jpg",
+    img: "/Memory/12cards/2.webp",
   },
   {
     name: "3",
-    img: "/Memory/12cards/3.jpg",
+    img: "/Memory/12cards/3.webp",
   },
   {
     name: "4",
-    img: "/Memory/12cards/4.jpg",
+    img: "/Memory/12cards/4.webp",
   },
   {
     name: "5",
-    img: "/Memory/12cards/5.jpg",
+    img: "/Memory/12cards/5.webp",
   },
   {
     name: "6",
-    img: "/Memory/12cards/6.jpg",
+    img: "/Memory/12cards/6.webp",
   },
 ]);
 
 const cardArrayMedium = ref([
   {
     name: "1",
-    img: "/Memory/18cards/1.jpg",
+    img: "/Memory/18cards/1.webp",
   },
   {
     name: "2",
-    img: "/Memory/18cards/2.jpg",
+    img: "/Memory/18cards/2.webp",
   },
   {
     name: "3",
-    img: "/Memory/18cards/3.jpg",
+    img: "/Memory/18cards/3.webp",
   },
   {
     name: "4",
-    img: "/Memory/18cards/4.jpg",
+    img: "/Memory/18cards/4.webp",
   },
   {
     name: "5",
-    img: "/Memory/18cards/5.jpg",
+    img: "/Memory/18cards/5.webp",
   },
   {
     name: "6",
-    img: "/Memory/18cards/6.jpg",
+    img: "/Memory/18cards/6.webp",
   },
 
   {
     name: "7",
-    img: "/Memory/18cards/7.jpg",
+    img: "/Memory/18cards/7.webp",
   },
   {
     name: "8",
-    img: "/Memory/18cards/8.jpg",
+    img: "/Memory/18cards/8.webp",
   },
   {
     name: "9",
-    img: "/Memory/18cards/9.jpg",
+    img: "/Memory/18cards/9.webp",
   },
   {
     name: "1",
-    img: "/Memory/18cards/1.jpg",
+    img: "/Memory/18cards/1.webp",
   },
   {
     name: "2",
-    img: "/Memory/18cards/2.jpg",
+    img: "/Memory/18cards/2.webp",
   },
   {
     name: "3",
-    img: "/Memory/18cards/3.jpg",
+    img: "/Memory/18cards/3.webp",
   },
   {
     name: "4",
-    img: "/Memory/18cards/4.jpg",
+    img: "/Memory/18cards/4.webp",
   },
   {
     name: "5",
-    img: "/Memory/18cards/5.jpg",
+    img: "/Memory/18cards/5.webp",
   },
   {
     name: "6",
-    img: "/Memory/18cards/6.jpg",
+    img: "/Memory/18cards/6.webp",
   },
 
   {
     name: "7",
-    img: "/Memory/18cards/7.jpg",
+    img: "/Memory/18cards/7.webp",
   },
   {
     name: "8",
-    img: "/Memory/18cards/8.jpg",
+    img: "/Memory/18cards/8.webp",
   },
   {
     name: "9",
-    img: "/Memory/18cards/9.jpg",
+    img: "/Memory/18cards/9.webp",
   },
 ]);
 
 const cardArrayHard = ref([
   {
     name: "1",
-    img: "/Memory/22cards/1.jpg",
+    img: "/Memory/22cards/1.webp",
   },
   {
     name: "2",
-    img: "/Memory/22cards/2.jpg",
+    img: "/Memory/22cards/2.webp",
   },
   {
     name: "3",
-    img: "/Memory/22cards/3.jpg",
+    img: "/Memory/22cards/3.webp",
   },
   {
     name: "4",
-    img: "/Memory/22cards/4.jpg",
+    img: "/Memory/22cards/4.webp",
   },
   {
     name: "5",
-    img: "/Memory/22cards/5.jpg",
+    img: "/Memory/22cards/5.webp",
   },
   {
     name: "6",
-    img: "/Memory/22cards/6.jpg",
+    img: "/Memory/22cards/6.webp",
   },
 
   {
     name: "7",
-    img: "/Memory/22cards/7.jpg",
+    img: "/Memory/22cards/7.webp",
   },
   {
     name: "8",
-    img: "/Memory/22cards/8.jpg",
+    img: "/Memory/22cards/8.webp",
   },
   {
     name: "9",
-    img: "/Memory/22cards/9.jpg",
+    img: "/Memory/22cards/9.webp",
   },
   {
     name: "10",
-    img: "/Memory/22cards/10.jpg",
+    img: "/Memory/22cards/10.webp",
   },
   {
     name: "11",
-    img: "/Memory/22cards/11.jpg",
+    img: "/Memory/22cards/11.webp",
   },
   {
     name: "12",
-    img: "/Memory/22cards/12.jpg",
+    img: "/Memory/22cards/12.webp",
   },
   {
     name: "1",
-    img: "/Memory/22cards/1.jpg",
+    img: "/Memory/22cards/1.webp",
   },
   {
     name: "2",
-    img: "/Memory/22cards/2.jpg",
+    img: "/Memory/22cards/2.webp",
   },
   {
     name: "3",
-    img: "/Memory/22cards/3.jpg",
+    img: "/Memory/22cards/3.webp",
   },
   {
     name: "4",
-    img: "/Memory/22cards/4.jpg",
+    img: "/Memory/22cards/4.webp",
   },
   {
     name: "5",
-    img: "/Memory/22cards/5.jpg",
+    img: "/Memory/22cards/5.webp",
   },
   {
     name: "6",
-    img: "/Memory/22cards/6.jpg",
+    img: "/Memory/22cards/6.webp",
   },
 
   {
     name: "7",
-    img: "/Memory/22cards/7.jpg",
+    img: "/Memory/22cards/7.webp",
   },
   {
     name: "8",
-    img: "/Memory/22cards/8.jpg",
+    img: "/Memory/22cards/8.webp",
   },
   {
     name: "9",
-    img: "/Memory/22cards/9.jpg",
+    img: "/Memory/22cards/9.webp",
   },
   {
     name: "10",
-    img: "/Memory/22cards/10.jpg",
+    img: "/Memory/22cards/10.webp",
   },
   {
     name: "11",
-    img: "/Memory/22cards/11.jpg",
+    img: "/Memory/22cards/11.webp",
   },
   {
     name: "12",
-    img: "/Memory/22cards/12.jpg",
+    img: "/Memory/22cards/12.webp",
   },
 ]);
 
@@ -282,9 +282,7 @@ const checkForMatch = () => {
     const movesCount = moves.value;
     console.log("koniec gry ");
     finalpopup.value = true;
-    // alert(
-    //   `Congratulations! Your time: ${finalTime} and Number of moves: ${movesCount}`
-    // );
+
     toggleTimer(false);
   }
 };
@@ -403,7 +401,7 @@ function resetGame() {
           @click="flipCard(index)"
         >
           <img
-            :src="card.flipped ? card.img : '/Memory/blank.png'"
+            :src="card.flipped ? card.img : '/Memory/blank.webp'"
             :data-id="card.name"
             class="card-image"
           />

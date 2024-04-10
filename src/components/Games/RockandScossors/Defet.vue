@@ -1,7 +1,7 @@
 <template>
   <div class="popup">
     <div class="popup-content">
-      <img src="../../../assets/image/RockScissors/defet.png" alt="" />
+      <img src="../../../assets/image/RockScissors/defet.webp" alt="" />
       <slot></slot>
     </div>
   </div>
