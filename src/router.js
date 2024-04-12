@@ -21,6 +21,11 @@ const routes = [
     name: "memory",
     component: () => import("./views/MemoryView.vue"),
   },
+  {
+    path: "/spaceinvaders",
+    name: "spaceinvaders",
+    component: () => import("./views/SpaceInavdersView.vue"),
+  },
 ];
 
 const router = createRouter({

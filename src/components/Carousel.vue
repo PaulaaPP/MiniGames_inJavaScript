@@ -98,20 +98,22 @@ function showSlider(type) {
       </div>
       <!-- item 3 -->
       <div class="item">
-        <img src="../assets/image/blank.jpg" />
+        <img src="../assets/image/SpaceInvaders/BG.webp" />
         <div class="content">
-          <div class="title">DESIGN SLIDER</div>
-          <div class="topic">ANIMAL</div>
-          <div class="des">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi,
-            rem magnam nesciunt minima placeat, itaque eum neque officiis unde,
-            eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut
-            doloribus non numquam. Explicabo, laboriosam nisi reprehenderit
-            tempora at laborum natus unde. Ut, exercitationem eum aperiam illo
-            illum laudantium?
+          <div class="color-border">
+            <div class="title">Game</div>
+            <div class="topic">Space Invaders</div>
+            <div class="description">
+              "Space Invaders" is a classic arcade game. Players control a
+              single spacecraft tasked with shooting down enemy ships while
+              avoiding their attacks, aiming to survive as long as possible and
+              score as many points as they can.
+            </div>
           </div>
           <div class="buttons">
-            <button>SEE MORE</button>
+            <button class="color-border">
+              <router-link to="/spaceinvaders">Play Game</router-link>
+            </button>
           </div>
         </div>
       </div>
@@ -134,9 +136,9 @@ function showSlider(type) {
       </div>
       <!-- thumnail 3 -->
       <div class="item">
-        <img src="../assets/image/blank.jpg" />
+        <img src="../assets/image/SpaceInvaders/thumbnail _Invaders.webp" />
         <div class="content">
-          <div class="title">Name Slider</div>
+          <div class="title">Space Invaders</div>
         </div>
       </div>
     </div>
