@@ -39,8 +39,8 @@ import { Icon } from "@iconify/vue";
         >
       </ul>
     </div>
+    <span>All rights reserved &copy; |Paula Piskorz 2024</span>
   </div>
-  <span>All rights reserved &copy; |Paula Piskorz 2024</span>
 </template>
 
 <style scoped>

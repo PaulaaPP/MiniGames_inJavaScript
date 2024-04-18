@@ -184,6 +184,29 @@ onMounted(() => {
   window.addEventListener("resize", updateValues);
   updateValues();
 });
+//
+//
+// Nowe metody dla przycisków
+const moveShooterLeft = () => {
+  if (currentShooterIndex.value % width !== 0) {
+    currentShooterIndex.value -= 1;
+  }
+  console.log("left");
+};
+
+const moveShooterRight = () => {
+  if (currentShooterIndex.value % width < width - 1) {
+    currentShooterIndex.value += 1;
+    gameStart = true;
+  }
+
+  console.log("right");
+};
+
+const shootLaser = () => {
+  shoot();
+  console.log("shoottt");
+};
 </script>
 
 <template>
@@ -245,18 +268,29 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    <!-- buttons for mobile devices -->
+    <div class="mobileBtns">
+      <div class="shootBtn">
+        <button @click="shootLaser">Shoot</button>
+      </div>
+      <div class="leftRightBtns">
+        <button @click="moveShooterLeft">←</button>
+        <button @click="moveShooterRight">→</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .container {
   margin-top: 12em;
-  /* color: white; */
 }
 
 .box {
   display: flex;
 }
+
+/* buttons level */
 .buttonsArea {
   display: flex;
   flex-direction: column;
@@ -273,6 +307,9 @@ onMounted(() => {
   font-weight: 700;
   margin: 0.5em 0;
 }
+.resetBtn {
+  padding: 0.5em;
+}
 
 .resetBtn,
 .selectBtn {
@@ -282,22 +319,29 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   color: white;
-}
-
-.battleArea {
-  width: 70%;
-  margin: auto;
-}
-
-.levelsBtn button {
   margin: 1em;
 }
 
 .selectBtnLevel {
   background-color: var(--orange-primary) !important;
 }
-.resetBtn {
-  padding: 0.5em;
+
+/* Battle area styles */
+.battleArea {
+  width: 70%;
+  margin: auto;
+}
+
+.grid div {
+  width: 50px;
+  height: 50px;
+}
+.grid {
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
 }
 .invader {
   background-size: cover;
@@ -314,11 +358,6 @@ onMounted(() => {
   height: 50px;
 }
 
-.grid div {
-  width: 50px;
-  height: 50px;
-}
-
 div .laser {
   background: rgb(240, 251, 63);
   background: radial-gradient(
@@ -331,12 +370,22 @@ div .laser {
   border-radius: 60%;
 }
 
-.grid {
-  width: 600px;
-  height: 600px;
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
+/* control buttons for mobile
+ */
+.mobileBtns {
+  display: none;
+}
+.mobileBtns button {
+  background-color: var(--blue-500);
+  color: var(--orange-primary);
+  border: 2px solid var(--blue-dark);
+  border-radius: 10px;
+  padding: 0.5em;
+  font-size: 20px;
+}
+
+.leftRightBtns button {
+  margin: 0 1em;
 }
 
 /* screen size */
@@ -366,7 +415,6 @@ div .laser {
     padding: 0.5em;
     font-size: 0.8em;
     font-weight: 600;
-    /* margin: 0.5em 0; */
   }
 
   .battleArea {
@@ -392,11 +440,40 @@ div .laser {
     width: 10px;
     height: 15px;
   }
+
+  /* control buttons for mobile
+ */
+  .mobileBtns {
+    display: flex;
+    justify-content: space-between;
+    margin: 9em 1em;
+  }
 }
 
 @media screen and (max-width: 375px) {
   .buttonsArea {
     height: 8em;
+  }
+
+  .mobileBtns {
+    margin: 2em 0.5em;
+  }
+
+  .mobileBtns button {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .buttonsArea button {
+    font-size: 0.6em;
+  }
+  .buttonsArea {
+    height: 5em;
+  }
+
+  .mobileBtns {
+    margin: 0 0.5em;
   }
 }
 </style>

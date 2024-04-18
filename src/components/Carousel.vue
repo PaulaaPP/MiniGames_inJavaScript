@@ -2,7 +2,7 @@
 import "../assets/Css/caruselStyles.css";
 import { ref, onMounted } from "vue";
 
-const carouselDom = ref(null);
+const carouselDom = ref();
 const sliderDom = ref(null);
 const thumbnailBorderDom = ref(null);
 
@@ -34,14 +34,17 @@ function showSlider(type) {
     carouselDom.value.classList.add("prev");
   }
 
-  carouselDom.value.addEventListener(
-    "transitionend",
-    () => {
-      carouselDom.value.classList.remove("next");
-      carouselDom.value.classList.remove("prev");
-    },
-    { once: true }
-  );
+  // Sprawdź, czy carouselDom.value nie jest null przed dodaniem listenera
+  if (carouselDom.value) {
+    carouselDom.value.addEventListener(
+      "transitionend",
+      () => {
+        carouselDom.value.classList.remove("next");
+        carouselDom.value.classList.remove("prev");
+      },
+      { once: true }
+    );
+  }
 }
 </script>
 
