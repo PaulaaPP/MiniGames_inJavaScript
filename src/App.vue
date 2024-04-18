@@ -28,7 +28,7 @@ body,
   padding: 0;
   font-family: "Changa One", sans-serif;
   /* overflow: hidden; preventing scrolling page */
-  background-color: #050505a1;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
 }
 
 body h1 h2 h3 {

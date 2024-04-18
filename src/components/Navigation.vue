@@ -3,7 +3,7 @@
     <div class="lol2">
       <div class="links">
         <router-link to="/"
-          ><img src="../assets/image/Logo_transparent.png" alt="logo"
+          ><img src="../assets/image/MojeLogo_noBg_2.0.png" alt="logo"
         /></router-link>
 
         <router-link class="link color-border" to="/">Home</router-link>
@@ -25,7 +25,7 @@ nav a.link {
 }
 
 .links {
-  margin-top: 10px;
+  margin-top: 16px;
 }
 
 nav a.link:hover,
@@ -35,7 +35,7 @@ nav a.router-link-active {
 }
 nav img {
   vertical-align: middle;
-  width: 65px;
+  width: 59px;
 }
 
 nav {

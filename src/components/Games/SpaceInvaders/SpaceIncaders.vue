@@ -1,15 +1,29 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted } from "vue";
 import { Icon } from "@iconify/vue";
 
 const squaresArray = ref([]); //all divs for the battle area
-let currentShooterIndex = ref(202);
-let currentLaserIndex = ref(null); // Define currentLaserIndex here
-let width = 15;
-let goingRight = true; // Zmienna określająca kierunek ruchu obcych
+let currentShooterIndex = ref(100);
+let currentLaserIndex = ref(null);
+let width = 20;
+let goingRight = true; // define direction of invaders
 let invadersId;
-const invadersMoving = ref(true);
-const resultGame = ref(false);
+let shootingInterval;
+let gameStart = false;
+const resultGame = ref(null);
+const openModal = ref(true);
+const selectedDifficulty = ref("");
+
+// Funkcja do aktualizacji wartości w zależności od szerokości okna
+const updateValues = () => {
+  if (window.innerWidth <= 768) {
+    width = 12;
+    currentShooterIndex.value = 135;
+  } else {
+    width = 12;
+    currentShooterIndex.value = 140;
+  }
+};
 
 // size of battle area
 for (let i = 0; i < 225; i++) {
@@ -18,8 +32,8 @@ for (let i = 0; i < 225; i++) {
 
 // number of alien
 const alienInvaders = ref([
-  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31,
-  32, 33, 34, 35, 36, 37, 38, 39,
+  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+  22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
 ]);
 
 // Move shooter based on arrow key presses
@@ -31,11 +45,16 @@ const moveShooter = e => {
     currentShooterIndex.value % width < width - 1
   ) {
     currentShooterIndex.value += 1;
+    gameStart = true;
   }
 };
 
 // Move invaders
 const moveInvaders = () => {
+  if (!gameStart) {
+    return;
+  }
+
   const leftEdge = alienInvaders.value[0] % width === 0;
   const rightEdge =
     alienInvaders.value[alienInvaders.value.length - 1] % width === width - 1;
@@ -49,17 +68,16 @@ const moveInvaders = () => {
     );
   }
 
-  // check if is Game Ocer
+  // Check if Games is Over
   if (
     alienInvaders.value.some(
       invaderIndex => invaderIndex === currentShooterIndex.value
+    ) ||
+    alienInvaders.value.some(
+      invaderIndex => invaderIndex > currentShooterIndex.value
     )
   ) {
-    clearInterval(invadersId);
-    resultGame.value = true;
-
-    console.log("Game!!!!Over!");
-    // gameOver();
+    checkResulGame();
   }
 };
 
@@ -70,12 +88,17 @@ const shoot = () => {
   const shootLaser = () => {
     if (currentLaserIndex.value >= width) {
       currentLaserIndex.value -= width;
-
+      //check if invaders is shoot
       if (alienInvaders.value.includes(currentLaserIndex.value)) {
         const invaderIndex = alienInvaders.value.indexOf(
           currentLaserIndex.value
         );
         alienInvaders.value.splice(invaderIndex, 1);
+      }
+      // check if all invaders are eliminated = Win Game
+      if (alienInvaders.value.length === 0) {
+        clearInterval(laserId);
+        checkResulGame();
       }
 
       if (currentLaserIndex.value < width) {
@@ -88,66 +111,60 @@ const shoot = () => {
   const laserId = setInterval(shootLaser, 200);
 };
 
-// Function to shoot lasers
+// Final Result
+const checkResulGame = () => {
+  if (alienInvaders.value.length === 0) {
+    resultGame.value = "You Win";
+  } else {
+    clearInterval(invadersId);
+    resultGame.value = "Game Over ";
+  }
+};
 
-let shootingInterval; // Zmienna globalna
+// Level of game
 function startGame(difficulty) {
   switch (difficulty) {
     case "easy":
-      shootingInterval = 900;
+      shootingInterval = 400;
       break;
     case "medium":
       shootingInterval = 300;
       break;
     case "hard":
-      shootingInterval = 150;
+      shootingInterval = 250;
       break;
     default:
-      shootingInterval = 600;
+      // shootingInterval = 600;
       break;
   }
-  return shootingInterval; // Zwracanie interwału do uruchomienia funkcji moveInvaders()
+
+  return shootingInterval;
 }
 
-// Stop /Start moving invaders
-const startStopInavders = () => {
-  invadersMoving.value = !invadersMoving.value;
-  if (invadersMoving.value) {
-    invadersId = setInterval(moveInvaders, 300);
-  } else {
-    clearInterval(invadersId);
-  }
-};
-
 const resetGame = () => {
-  clearInterval(invadersId);
-  // invadersMoving.value = false;
+  // clearInterval(invadersId);
+  gameStart = false;
+  resultGame.value = null;
+  currentLaserIndex = ref(null);
   alienInvaders.value = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30,
-    31, 32, 33, 34, 35, 36, 37, 38, 39,
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 24,
+    25, 26, 27, 28, 29, 30, 31, 32, 33,
   ];
 };
 
-const easy = () => {
+// button levels
+function setDifficulty(difficulty) {
   clearInterval(invadersId);
-  // resetGame();
-  invadersId = setInterval(moveInvaders, startGame("easy"));
-  console.log("easy");
+  selectedDifficulty.value = difficulty;
+  gameStart = true;
+  invadersId = setInterval(moveInvaders, startGame(difficulty));
+  selectLevel();
+}
+
+const selectLevel = () => {
+  openModal.value = !openModal.value;
 };
 
-const medium = () => {
-  clearInterval(invadersId);
-  // resetGame();
-  invadersId = setInterval(moveInvaders, startGame("medium"));
-  console.log("medium");
-};
-
-const hard = () => {
-  clearInterval(invadersId);
-  // resetGame();
-  invadersId = setInterval(moveInvaders, startGame("hard"));
-  console.log("hard");
-};
 // Event listeners
 onMounted(() => {
   document.addEventListener("keydown", e => {
@@ -160,101 +177,226 @@ onMounted(() => {
 
 onMounted(() => {
   document.addEventListener("keydown", moveShooter);
-  invadersId = setInterval(moveInvaders, 500);
+  invadersId = setInterval(moveInvaders, 400);
+});
+
+onMounted(() => {
+  window.addEventListener("resize", updateValues);
+  updateValues();
 });
 </script>
 
 <template>
   <div>
     <div class="container">
-      <h1 v-if="resultGame" class="results">GAME OVER</h1>
-      <div class="grid">
-        <div
-          v-for="(squares, index) in squaresArray"
-          :key="index"
-          :class="{
-            square: true,
-            // invader: alienInvaders.includes(index),
-            shooter: index === currentShooterIndex,
-            laser: index === currentLaserIndex,
-          }"
-        >
-          <!-- Wyświetlenie ikony na pozycji strzelca -->
-          <Icon
-            v-if="alienInvaders.includes(index)"
-            icon="mdi:space-invaders"
-            width="2rem"
-            height="2rem"
-            class="lol"
-          />
+      <div class="box">
+        <div class="buttonsArea">
+          <button @click="resetGame" class="resetBtn">Reste Game</button>
+          <button @click="selectLevel" class="selectBtn">Select Level</button>
+          <!--  -->
+          <div v-if="!openModal" class="levelsBtn">
+            <button
+              @click="setDifficulty('easy')"
+              :class="{ selectBtnLevel: selectedDifficulty === 'easy' }"
+            >
+              Easy
+            </button>
+            <button
+              @click="setDifficulty('medium')"
+              :class="{ selectBtnLevel: selectedDifficulty === 'medium' }"
+            >
+              Medium
+            </button>
+            <button
+              @click="setDifficulty('hard')"
+              :class="{ selectBtnLevel: selectedDifficulty === 'hard' }"
+            >
+              Hard
+            </button>
+          </div>
+
+          <h1
+            v-show="checkResulGame"
+            :style="{ color: resultGame === 'You Win' ? '#8FE600' : 'red' }"
+          >
+            {{ resultGame }}
+          </h1>
+        </div>
+
+        <!--  -->
+        <div class="battleArea">
+          <div class="grid">
+            <div
+              v-for="(squares, index) in squaresArray"
+              :key="index"
+              :class="{
+                square: true,
+                laser: index === currentLaserIndex,
+                shooter: index === currentShooterIndex,
+              }"
+            >
+              <Icon
+                v-if="alienInvaders.includes(index)"
+                icon="mdi:space-invaders"
+                class="invader"
+              />
+            </div>
+          </div>
         </div>
       </div>
-
-      <button @click="startStopInavders">
-        {{ invadersMoving ? "Stop" : "Start" }}
-      </button>
-      <button @click="resetGame">Reste Game</button>
-      <br />
-      <button @click="easy">Łatwy</button>
-      <button @click="medium">Średni</button>
-      <button @click="hard">Trudny</button>
     </div>
-
-    <Icon icon="mdi:space-invaders" width="7rem" height="7rem" class="lol" />
   </div>
 </template>
 
 <style scoped>
-.lol {
-  color: greenyellow;
-}
 .container {
-  margin-top: 10em;
+  margin-top: 12em;
+  /* color: white; */
+}
+
+.box {
+  display: flex;
+}
+.buttonsArea {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 2em;
+}
+
+.buttonsArea button {
+  background-color: var(--blue-500);
+  border: 2px solid var(--blue-dark);
+  border-radius: 10px;
+  padding: 0.5em;
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0.5em 0;
+}
+
+.resetBtn,
+.selectBtn {
+  color: var(--orange-primary);
+}
+.levelsBtn button {
+  display: flex;
+  flex-direction: column;
   color: white;
 }
 
+.battleArea {
+  width: 70%;
+  margin: auto;
+}
+
+.levelsBtn button {
+  margin: 1em;
+}
+
+.selectBtnLevel {
+  background-color: var(--orange-primary) !important;
+}
+.resetBtn {
+  padding: 0.5em;
+}
+.invader {
+  background-size: cover;
+  background-position: center;
+  font-size: 35px;
+  color: rgb(145, 235, 11);
+}
+
+.square.shooter {
+  background-image: url("../../../assets/image/SpaceInvaders/Ship.webp");
+  background-size: cover;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+}
+
+.grid div {
+  width: 50px;
+  height: 50px;
+}
+
+div .laser {
+  background: rgb(240, 251, 63);
+  background: radial-gradient(
+    circle,
+    rgba(240, 251, 63, 1) 0%,
+    rgba(252, 82, 70, 1) 100%
+  );
+  width: 20px;
+  height: 20px;
+  border-radius: 60%;
+}
+
 .grid {
-  width: 300px;
-  height: 300px;
-  border: solid black 1px;
+  width: 600px;
+  height: 600px;
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  background-color: rgba(241, 235, 235, 0.24);
 }
 
-/* do zmiany */
-.grid div {
-  width: 20px;
-  height: 20px;
+/* screen size */
+@media screen and (max-width: 768px) {
+  .container {
+    margin-top: 5em;
+  }
+  .box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid {
+    width: 300px;
+    height: 300px;
+  }
+  .grid div {
+    width: 25px;
+    height: 25px;
+  }
+
+  .buttonsArea {
+    height: 10em;
+  }
+
+  .buttonsArea button {
+    padding: 0.5em;
+    font-size: 0.8em;
+    font-weight: 600;
+    /* margin: 0.5em 0; */
+  }
+
+  .battleArea {
+    width: 100%;
+    margin: auto;
+  }
+
+  .levelsBtn {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .invader {
+    font-size: 17px;
+  }
+
+  .square.shooter {
+    width: 25px;
+    height: 25px;
+  }
+
+  div .laser {
+    width: 10px;
+    height: 15px;
+  }
 }
 
-.invader {
-  background-color: rgb(168, 211, 11);
-  border-radius: 10px;
+@media screen and (max-width: 375px) {
+  .buttonsArea {
+    height: 8em;
+  }
 }
-
-.shooter {
-  background-color: rgb(188, 20, 230);
-}
-
-.laser {
-  background-image: url(./assets/image/SpaceInvaders/alien.web);
-  background-color: red;
-  color: red;
-  background-size: cover;
-  background-position: center;
-  width: 5px;
-}
-
-.boom {
-  color: yellow;
-  background-color: blue;
-  /* background-image: url(./boom.jpg); */
-  background-size: cover;
-}
-
-/* i {
-  width: 200px;
-} */
 </style>

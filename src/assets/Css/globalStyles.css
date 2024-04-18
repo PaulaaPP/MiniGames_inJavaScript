@@ -20,7 +20,7 @@
   --red-border: #d02142;
   --blue-primary: #358dbdd3;
   --blue-bg: #81f6f5;
-  --blue-dark: #0d61b2;
+  --blue-dark: #037ac6;
 
   /* Memory game*/
   --bg-color: linear-gradient(
@@ -39,6 +39,9 @@
   --easy-color: #0daa59;
   --medium-color: #f4f80c;
   --hard-color: #d02142;
+
+  --blue-500: #1512bb;
+
 }
 
 .color-border {
