@@ -38,8 +38,8 @@ import { Icon } from "@iconify/vue";
           <li><Icon icon="uim:linkedin-alt" s />Linkedin</li></a
         >
       </ul>
+      <span>All rights reserved &copy; |Paula Piskorz 2024</span>
     </div>
-    <span>All rights reserved &copy; |Paula Piskorz 2024</span>
   </div>
 </template>
 
@@ -78,9 +78,9 @@ a {
   margin: 0 0.5em;
 }
 span {
-  margin: 5em;
+  margin: 5em 0;
   color: rgb(88, 88, 88);
-  font-size: 1em;
+  font-size: 0.8em;
 }
 @media screen and (max-width: 1000px) {
   .container {
